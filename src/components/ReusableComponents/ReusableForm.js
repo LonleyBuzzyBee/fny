@@ -1,6 +1,13 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
 
 const ReusableForm = ({formSubmission, importImage,buttonText }) => {
+  const history = useHistory();
+
+  const handleBackToList = (e) => {
+    e.preventDefault();
+    history.push('/All');
+  };
 
   return (
     <div className="form">
@@ -40,7 +47,7 @@ const ReusableForm = ({formSubmission, importImage,buttonText }) => {
         />
         <div className="formButtons">
           <button className="submitButton" type='submit'>{buttonText}</button>
-          <button className="formListButton"><a href='/list'>Back to list</a></button>
+          <button className="formListButton" onClick={handleBackToList}>Back to list</button>
         </div>
       </form>
     </div>

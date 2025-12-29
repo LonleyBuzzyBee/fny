@@ -1,10 +1,15 @@
-import * as c from './../actions/ActionTypes'
+// src/reducers/admin-reducer.js
+import { createSlice } from '@reduxjs/toolkit';
 
-export default (state = false, action) => {
-  switch (action.type) {
-    case c.IS_ADMIN:
-      return !state;
-    default:
-      return state;
-  }
-};
+const adminSlice = createSlice({
+  name: 'admin',
+  initialState: false,
+  reducers: {
+    // Explicit on/off is much safer than toggling
+    setAdmin: () => true,
+    clearAdmin: () => false,
+  },
+});
+
+export const { setAdmin, clearAdmin } = adminSlice.actions;
+export default adminSlice.reducer;

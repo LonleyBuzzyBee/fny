@@ -95,7 +95,7 @@ const LandingPage = ({currentUser}) => {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} width={item.width} height={item.height}/>
-        <CarouselCaption style={{color:"black"}} captionHeader={item.caption} />
+        <CarouselCaption style={{color:"black"}} captionHeader={item.caption} captionText="" />
       </CarouselItem>
     );
   });
@@ -107,7 +107,7 @@ const LandingPage = ({currentUser}) => {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} width={item.width} height={item.height}/>
-        <CarouselCaption captionHeader={item.caption} />
+        <CarouselCaption captionHeader={item.caption} captionText="" />
       </CarouselItem>
     );
   });
@@ -119,7 +119,7 @@ const LandingPage = ({currentUser}) => {
         key={item.src}
       >
         <img src={item.src} alt={item.altText} width={item.width} height={item.height}/>
-        <CarouselCaption captionHeader={item.caption} />
+        <CarouselCaption captionHeader={item.caption} captionText="" />
       </CarouselItem>
     );
   });

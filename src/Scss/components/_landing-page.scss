@@ -89,7 +89,8 @@ a{
   margin-right:50px;
 }
 .caroselSection{
-  display: table;
+  display: flex;
+  flex-direction: row;
   clear: both;
   border-spacing: 15px;
   margin-top: 5%;
@@ -135,7 +136,7 @@ CarouselControl{
   margin-left: 160px;
   margin-right:200px;
   width: 140px;
-  height: 60px;
+  height: 25%;
   padding: 20px;
     @include respond(phone){
       margin: 0px;

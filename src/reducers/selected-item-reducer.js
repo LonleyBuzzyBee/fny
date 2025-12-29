@@ -1,11 +1,14 @@
-import * as c from '../actions/ActionTypes';
+// src/reducers/selected-item-reducer.js
+import { createSlice } from '@reduxjs/toolkit';
 
-export default (state = null, action) => {
-  const { type, item } = action; 
-  switch (action.type) {
-    case c.SELECTED_ITEM:    
-      return state = action.item;
-    default :
-      return state; 
-  }
-};
+const selectedItemSlice = createSlice({
+  name: 'selectedItem',
+  initialState: null,
+  reducers: {
+    setSelectedItem: (state, action) => action.payload,
+    clearSelectedItem: () => null,
+  },
+});
+
+export const { setSelectedItem, clearSelectedItem } = selectedItemSlice.actions;
+export default selectedItemSlice.reducer;

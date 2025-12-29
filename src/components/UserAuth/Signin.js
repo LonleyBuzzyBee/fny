@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import firebase from "firebase/app";
+import { auth } from "../../firebase"
 import Header from '../ReusableComponents/Header';
 import FNYLOGO from '../assets/imgs/logoFNY.png'
 
@@ -9,9 +9,10 @@ const Signin = () => {
   event.preventDefault();
   const email = event.target.signinEmail.value;
   const password = event.target.signinPassword.value;
-    
-  firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-      console.log(firebase.auth().currentUser)
+
+  // Using compat mode: auth.signInWithEmailAndPassword()
+  auth.signInWithEmailAndPassword(email, password).then(function () {
+      // console.log(auth.currentUser)
     console.log("Successfully signed in!");
     setMessage("Successfully signed in!")
   }).catch(function (error) {

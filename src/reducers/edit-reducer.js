@@ -1,10 +1,15 @@
-import * as c from './../actions/ActionTypes'
+// src/reducers/edit-reducer.js
+import { createSlice } from '@reduxjs/toolkit';
 
-export default (state = false, action) => {
-  switch (action.type) {
-    case c.EDIT_ITEM:
-      return !state;
-    default:
-      return state;
-  }
-};
+const editSlice = createSlice({
+  name: 'editing',
+  initialState: false,
+  reducers: {
+    startEditing: () => true,
+    stopEditing: () => false,
+    toggleEditing: (state) => !state,
+  },
+});
+
+export const { startEditing, stopEditing, toggleEditing } = editSlice.actions;
+export default editSlice.reducer;

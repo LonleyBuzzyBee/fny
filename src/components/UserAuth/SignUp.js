@@ -1,19 +1,23 @@
-import React from "react";
-import firebase from "firebase/app";
+import React, {useState} from "react";
+import { auth } from "../../firebase"
 import Header from '../ReusableComponents/Header';
 import FNYLOGO from '../assets/imgs/logoFNY.png'
 
 
 const SignUp = () => {
+  const [message, setMessage] = useState("");
 
   const doSignUp = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
+    // Using compat mode: auth.createUserWithEmailAndPassword()
+    auth.createUserWithEmailAndPassword(email, password).then(function(){
       console.log("successfully signed up!");
+      setMessage("Successfully signed up!");
     }).catch(function(error) {
       console.log(error.message);
+      setMessage(error.message);
     });
   }
   return (
@@ -32,6 +36,7 @@ const SignUp = () => {
               type='password'
               name='password'
               placeholder='Password' />
+            {message}
             <a href="/"><button className="submitButton" type='submit'>SIGN UP</button></a>
           </form>
         </div>

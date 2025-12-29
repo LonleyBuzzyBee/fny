@@ -1,11 +1,17 @@
-import * as c from '../actions/ActionTypes';
+// src/reducers/current-user-reducer.js
+import { createSlice } from '@reduxjs/toolkit';
 
-export default (state = null, action) => {
-  const { type, user } = action; 
-  switch (action.type) {
-    case c.UPDATE_USER:    
-      return state = action.user;
-    default :
-      return state; 
-  }
-};
+const currentUserSlice = createSlice({
+  name: 'currentUser',
+  initialState: null,
+  reducers: {
+    updateCurrentUser: (state, action) => {
+      // expect a plain serializable user object or null
+      return action.payload;
+    },
+    clearCurrentUser: () => null,
+  },
+});
+
+export const { updateCurrentUser, clearCurrentUser } = currentUserSlice.actions;
+export default currentUserSlice.reducer;
