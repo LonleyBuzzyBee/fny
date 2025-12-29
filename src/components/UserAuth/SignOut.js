@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import firebase from "firebase/app";
+import { auth } from "../../firebase";
 import Header from '../ReusableComponents/Header';
 import * as a from "../../actions";
 import FNYLOGO from '../assets/imgs/logoFNY.png'
@@ -8,7 +8,8 @@ import FNYLOGO from '../assets/imgs/logoFNY.png'
 const SignOut = () => {
   const dispatch = useDispatch();
   const doSignOut = () => {
-    firebase.auth().signOut().then(function () {
+    // Using compat mode: auth.signOut()
+    auth.signOut().then(function () {
       dispatch(a.updateCurrentUser(null));
       console.log("Successfully signed out!");
     }).catch(function(error) {

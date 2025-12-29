@@ -14,22 +14,32 @@ const ItemDetail = () => {
   const selectedItem = useSelector(state => state.selectedItem);
   const editing = useSelector(state => state.editing);
   const items = useSelector(state => state.firestore.ordered.items);
-  let recommended = items.filter(item => item.category === selectedItem.category);
+  
+  // Console logs for debugging
+  console.log('ItemDetails - selectedItem:', selectedItem);
+  console.log('ItemDetails - selectedItem type:', typeof selectedItem);
+  console.log('ItemDetails - selectedItem is truthy?', !!selectedItem);
+  console.log('ItemDetails - editing:', editing);
+  
+  // Safety check for items array
+  const itemsArray = Array.isArray(items) ? items : [];
+  let recommended = selectedItem ? itemsArray.filter(item => item?.category === selectedItem?.category) : [];
+  
   const deletingItem = (id) => {
     firestore.delete({collection: 'items', doc: id});
     dispatch(a.selectedItem(null));
   }
-  console.log(selectedItem);
 
   const editItem = () => {
     dispatch(a.editItem()); 
   }
+  
   if (editing) {
     return (
       <EditItem selectedItem={selectedItem}/>
     )
   }
-  else if (isLoaded(selectedItem)) {
+  else if (selectedItem) {
     return (
       <>
         <Header />
@@ -51,7 +61,7 @@ const ItemDetail = () => {
                 <div className="item-details-rating">
                   <p>Rating:</p>
                   <StarRatings
-                    rating={selectedItem.rating}
+                    rating={Number(selectedItem.rating) || 0}
                     starDimension="15px"
                     starSpacing="15px"
                     numberOfStars={5} />
@@ -87,7 +97,8 @@ const ItemDetail = () => {
 } else {
   return (
     <React.Fragment>
-        <h3>Loading...</h3>
+        <Header />
+        <h3>No item selected</h3>
     </React.Fragment>
     )
   }

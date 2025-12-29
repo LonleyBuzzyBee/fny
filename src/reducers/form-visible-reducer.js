@@ -1,10 +1,15 @@
-import * as c from './../actions/ActionTypes';
+// src/reducers/form-visible-reducer.js
+import { createSlice } from '@reduxjs/toolkit';
 
-export default (state = false, action) => {
-  switch (action.type) {
-    case c.SEE_FORM:
-      return !state;
-    default:
-      return state; 
-  }
-};
+const formVisibleSlice = createSlice({
+  name: 'formVisibleOnPage',
+  initialState: false,
+  reducers: {
+    showForm: () => true,
+    hideForm: () => false,
+    toggleForm: (state) => !state,
+  },
+});
+
+export const { showForm, hideForm, toggleForm } = formVisibleSlice.actions;
+export default formVisibleSlice.reducer;
