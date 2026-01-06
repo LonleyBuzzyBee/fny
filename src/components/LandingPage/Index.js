@@ -7,78 +7,65 @@ import slide4 from '../assets/imgs/foamy.jpg';
 import slide5 from '../assets/imgs/pinkMoistureStand.jpg'
 import slide6 from '../assets/imgs/pinkMoisture.jpg'
 import logoInt from '../assets/imgs/logoNoC.png'
-import vegan from '../assets/imgs/vegan.png'
-import sulfate from '../assets/imgs/sulfate.png'
-import derm from '../assets/imgs/derm.png'
-import cruelty from '../assets/imgs/cruelty.png'
 import React, { useState } from 'react';
 import Header from '../ReusableComponents/Header'
+import LogosSection from '../ReusableComponents/LogosSection'
+import Footer from '../ReusableComponents/Footer'
+import PopularItems from '../ReusableComponents/PopularItems'
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import ProductCard from './ProductCard';
 
-const items = [
+// Product cards data
+const productCards = [
   {
-    src: `${ slide1 }`,
-    altText: 'Slide 1',
-    width: "300px",
-    height: "500px",
-    caption: 'SERUMS'
+    id: 1,
+    title: 'CLEANSERS',
+    description: 'ojudhnco dlocihn dcljh ndc khjbgk dcjhb gljkd ch j',
+    image: slide5,
+    route: '/Face'
   },
   {
-    src: `${ slide2 }`,
-    altText: 'SERUMS',
-    width: "300px",
-    height: "500px",
-    caption: 'SERUMS'
+    id: 2,
+    title: 'SERUMS',
+    description: 'lorem ipsume ifgjh iueois oo eohoighi ieuhkgrvjnolh Ikjnfvr flovjhljhnuvrf',
+    image: slide1,
+    route: '/Face'
   },
+  {
+    id: 3,
+    title: 'KITS',
+    description: 'Moiey iuchy sdiuch g kuijdy jduyo hj dkjdkjj foifolf fifdl',
+    image: slide3,
+    route: '/All'
+  }
 ];
-const items2 = [
-  {
-    src: `${ slide3 }`,
-    altText: 'Slide 1',
-    width: "300px",
-    height: "500px",
-    caption: 'SKINCARE KITS'
-  },
-  {
-    src: `${ slide4 }`,
-    altText: 'Slide 2',
-    width: "300px",
-    height: "500px",
-    caption: 'SKINCARE KITS'
-  },
 
-];
-const items3 = [
-  {
-    src: `${ slide5 }`,
-    altText: 'Slide 1',
-    width: "300px",
-    height: "500px",
-    caption: 'CLEANSERS'
-  },
-  {
-    src: `${ slide6 }`,
-    altText: 'Slide 2',
-    width: "300px",
-    height: "500px",
-    caption: 'CLEANSERS'
-  },
-];
+// Carousel items for mobile/tablet view
+const carouselItems = productCards.map((card, index) => ({
+  src: card.image,
+  altText: card.title,
+  width: "300px",
+  height: "500px",
+  caption: card.title,
+  cardData: card
+}));
 
 
 const LandingPage = ({currentUser}) => {
+  // Carousel state for mobile/tablet view
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+  // Handlers for carousel
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === carouselItems.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   }
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? carouselItems.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   }
 
@@ -87,46 +74,27 @@ const LandingPage = ({currentUser}) => {
     setActiveIndex(newIndex);
   }
 
-  const slides = items.map((item) => {
+  const slides = carouselItems.map((item) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <img src={item.src} alt={item.altText} width={item.width} height={item.height}/>
-        <CarouselCaption style={{color:"black"}} captionHeader={item.caption} captionText="" />
-      </CarouselItem>
-    );
-  });
-  const slides2 = items2.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} width={item.width} height={item.height}/>
-        <CarouselCaption captionHeader={item.caption} captionText="" />
-      </CarouselItem>
-    );
-  });
-  const slides3 = items3.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(true)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <img src={item.src} alt={item.altText} width={item.width} height={item.height}/>
-        <CarouselCaption captionHeader={item.caption} captionText="" />
+        <ProductCard
+          title={item.cardData.title}
+          description={item.cardData.description}
+          image={item.cardData.image}
+          buttonText="SHOP NOW"
+          route={item.cardData.route}
+        />
       </CarouselItem>
     );
   });
 
 
   return (
-    <div>
+    <div className="full-width-container">
          <Header/>
       <main className="landingMain">
         <div className="introDiv-border">
@@ -138,56 +106,47 @@ const LandingPage = ({currentUser}) => {
         </div>
       </main>
 
-      <section className="caroselSection">
-        <Carousel className="caro"
-          activeIndex={activeIndex}
-          next={next}
-          previous={previous}
-          >
-          <CarouselIndicators className="carouselIndicators" items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-          {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-        </Carousel>
+      <section className="products-section">
+        <h2 className="products-section-heading">Discover different Products for your new routine</h2>
         
-        <Carousel className="caro"
-          activeIndex={activeIndex}
-          next={next}
-          previous={previous}
-          >
-          <CarouselIndicators className="carouselIndicators" items={items2} activeIndex={activeIndex} onClickHandler={goToIndex} />
-          {slides2}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-        </Carousel>
-   
+        {/* Desktop: Three cards side by side */}
+        <div className="products-cards-container">
+          {productCards.map((card) => (
+            <ProductCard
+              key={card.id}
+              title={card.title}
+              description={card.description}
+              image={card.image}
+              buttonText="SHOP NOW"
+              route={card.route}
+            />
+          ))}
+        </div>
 
-        <Carousel className="caro"
-          activeIndex={activeIndex}
-          next={next}
-          previous={previous}
+        {/* Tablet/Mobile: Single carousel */}
+        <div className="products-carousel-container">
+          <Carousel
+            activeIndex={activeIndex}
+            next={next}
+            previous={previous}
           >
-          <CarouselIndicators className="carouselIndicators" items={items3} activeIndex={activeIndex} onClickHandler={goToIndex} />
-          {slides3}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-        </Carousel>
+            <CarouselIndicators 
+              className="carouselIndicators" 
+              items={carouselItems} 
+              activeIndex={activeIndex} 
+              onClickHandler={goToIndex} 
+            />
+            {slides}
+            <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+            <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+          </Carousel>
+        </div>
       </section>
 
-      <div className="caroButtonSection">
-        <button className="caroButton b1">SHOP NOW</button>
-        <button className="caroButton b2">SHOP NOW</button>
-        <button className="caroButton">SHOP NOW</button>
-      </div>
+      <PopularItems />
 
-      <section className="logos-section">
-        <img className="crueltyFreeLogos" src={vegan} alt="crulty free logos" />
-        <img className="crueltyFreeLogos" src={sulfate} alt="crulty free logos" />
-        <img className="crueltyFreeLogos" src={cruelty} alt="crulty free logos" />
-        <img className="crueltyFreeLogos" src={derm} alt="crulty free logos" />
-        
-      </section>
-    {/* </Layout> */}
+      <LogosSection />
+      <Footer />
     </div>
     
   );

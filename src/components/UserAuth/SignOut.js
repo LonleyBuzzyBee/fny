@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { auth } from "../../firebase";
 import Header from '../ReusableComponents/Header';
+import LogosSection from '../ReusableComponents/LogosSection';
+import Footer from '../ReusableComponents/Footer';
 import * as a from "../../actions";
 import FNYLOGO from '../assets/imgs/logoFNY.png'
 
@@ -26,6 +28,8 @@ const SignOut = () => {
           <a href="/"><button className="submitButton" onClick={doSignOut}>SIGN OUT</button></a>
         </div>
       </div>
+      <LogosSection />
+      <Footer />
     </>
   );
 }

@@ -11,6 +11,8 @@ import ItemListBody from '../Product/ListBodyPage/Index';
 import ItemListFace from '../Product/ListFacePage/Index';
 import ItemListLips from '../Product/ListLipsPage/Index';
 import Checkout from '../UserOptions/Checkout'
+import ItemDetail from '../Product/ItemDetails';
+import EditItem from '../AdminOptions/EditItem';
 
 export default function Routes() {
   return (
@@ -20,6 +22,8 @@ export default function Routes() {
         <Route exact path="/Body" component={ItemListBody}/>
         <Route exact path="/Face" component={ItemListFace}/>
         <Route exact path="/Lips" component={ItemListLips}/>
+        <Route exact path="/item/:id/edit" component={EditItem}/>
+        <Route exact path="/item/:id" component={ItemDetail}/>
         <Route exact path="/SignIn" component={Signin}/>
         <Route exact path="/SignUp" component={SignUp} />
         <Route exact path="/SignOut" component={SignOut} />

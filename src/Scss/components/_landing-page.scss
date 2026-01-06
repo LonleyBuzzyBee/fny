@@ -1,13 +1,25 @@
-main{
+main.landingMain{
   background-image: url('../../assets/img/girlLeaf3.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1000px;
+  background-attachment: fixed;
+  height: 66.67vh;
+  min-height: 500px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   @include respond(phone){
-    height: 736px;
-    display:flex;
-     background-size:inherit;
+    height: 66.67vh;
+    min-height: 400px;
+    background-attachment: scroll;
+    background-size: cover;
     flex-direction: column;
   }
 }
@@ -37,23 +49,34 @@ a{
   background-color: #ffd5d7;
   border: solid;
   border-color: black;
-  margin-right: 150px;
-  margin-top: 150px;
   padding:50px;
   width: 400px;
+  max-width: calc(100% - 40px);
   height: 400px;
-  float:right;
+  box-sizing: border-box;
+  
+  @media (min-width: 601px) {
+    position: absolute;
+    right: 0;
+    margin-right: calc((100vw - 400px) / 4);
+    // Center vertically
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
   @include respond(phone){
+    position: relative;
       background-color: transparent;
       border: none;
-      margin-right: 150px;
-      margin-top: 150px;
-      padding:50px;
-      float:right;
+    margin: 0 auto;
+    padding:50px;
+    top: auto;
+    transform: none;
+    right: auto;
+      margin-right: auto;
       h5{
         display: none;
       }
-
   }
 }
 .introDiv{
@@ -94,6 +117,12 @@ a{
   clear: both;
   border-spacing: 15px;
   margin-top: 5%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-wrap: wrap;
   @include respond(phone){
       border-spacing: 0px;
       display: flex;
@@ -102,12 +131,15 @@ a{
   }
 }
 .caro{
-  margin-left: 150px;
-  margin-right: 150px;
+  margin-left: auto;
+  margin-right: auto;
   width: 300px;
+  max-width: calc(100% - 40px);
   float: left;
+  box-sizing: border-box;
     @include respond(phone){
       margin: 10px;
+      float: none;
   }
 }
 Carousel{
@@ -128,45 +160,269 @@ CarouselControl{
   padding:30px;
   padding-left: 80px;
   margin-bottom: 5%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-wrap: wrap;
   @include respond(phone){
       padding: 0px;
   }
 }
 .caroButton{
-  margin-left: 160px;
-  margin-right:200px;
+  margin-left: auto;
+  margin-right: auto;
   width: 140px;
   height: 25%;
   padding: 20px;
+  box-sizing: border-box;
     @include respond(phone){
       margin: 0px;
   }
 }
 .b1{
-  margin-right: 305px;
+  margin-right: auto;
   @include respond(phone){
     margin: 0px;
   }
 }
 .b2{
-  margin-right:305px;
+  margin-right: auto;
   @include respond(phone){
     margin: 0px;
   }
 }
 
 .logos-section{
-  background-color: white;
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding-left: 15%;
-  padding-top: 10%;
-  height: 600px;
+  background-color: #fcdadb;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 3em 2em;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+
   @include respond(phone){
-    height: 200px;
-    padding: 5px;
+    padding: 2em 1em;
+    gap: 1em;
   }
 }
+
 .crueltyFreeLogos{
   width: 100px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  @include respond(phone){
+    width: 80px;
+  }
+}
+
+// Carousel caption styles
+.carousel-caption-black {
+  color: black;
+}
+
+// Products Section
+.products-section {
+  background-color: #d7de8d;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 4em 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3em;
+
+  @include respond(phone) {
+    padding: 2em 1em;
+  }
+}
+
+.products-section-heading {
+  font-family: 'Roboto Serif', serif;
+  font-weight: 200;
+  font-size: 2.5em;
+  font-weight: 500;
+  color: #2D2926;
+  text-align: center;
+  margin: 0;
+  max-width: 800px;
+
+  @include respond(phone) {
+    font-size: 1.8em;
+  }
+}
+
+// Desktop: Three cards side by side
+.products-cards-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2em;
+  width: 100%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+
+  @include respond(tab-port) {
+    display: none;
+  }
+}
+
+// Tablet/Mobile: Single carousel
+.products-carousel-container {
+  display: none;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  @include respond(tab-port) {
+    display: block;
+  }
+
+  .caro {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .carousel-indicators {
+    display: flex !important;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    opacity: 0.8;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// Product Card Styles
+.product-card {
+  background-color: white;
+  border: 1px solid #d7de8d;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  max-width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.product-card-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include respond(phone) {
+    height: 300px;
+  }
+}
+
+.product-card-content {
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  flex: 1;
+}
+
+.product-card-title {
+  font-family: 'Roboto Serif', serif;
+  font-weight: 200;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #2D2926;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.product-card-divider {
+  border: none;
+  height: 1px;
+  background-color: #d7de8d;
+  margin: 0;
+  width: 100%;
+}
+
+.product-card-description {
+  font-family: 'Roboto Serif', serif;
+  font-weight: 200;
+  font-size: 0.95em;
+  color: #5A5552;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+}
+
+.product-card-button {
+  margin-left: auto;
+  margin-right: auto;
+  width: 140px;
+  height: 25%;
+  padding: 20px;
+  background-color: #fdc5c7;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Roboto Serif', serif;
+  font-weight: 200;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #2D2926;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+
+  @include respond(phone) {
+    margin: 0px;
+  }
+
+  &:hover {
+    background-color: #ffb3b8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(253, 197, 199, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Ensure ProductCard works in carousel
+.products-carousel-container .product-card {
+  margin: 0 auto;
+  max-width: 350px;
 }

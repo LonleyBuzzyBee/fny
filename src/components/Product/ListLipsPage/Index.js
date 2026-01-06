@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded} from 'react-redux-firebase';
-import ItemDetail from "../ItemDetails";
 import Header from '../../ReusableComponents/Header';
 import TopSection from '../../ReusableComponents/TopSection';
+import LogosSection from '../../ReusableComponents/LogosSection';
+import Footer from '../../ReusableComponents/Footer';
 import Items from '../Items';
 
 const LipsItemList = () =>{
   const items = useSelector(state => state.firestore.ordered.items);
-  const selectedItem = useSelector(state => state.selectedItem);
   
   // Console logs for debugging
   console.log('ListLipsPage - items:', items);
@@ -21,12 +21,6 @@ const LipsItemList = () =>{
     }
   ]);
   
-  if (selectedItem) {
-    return (
-      <ItemDetail />
-      )
-    }
-    
   // Check if items are loaded and is an array
   const itemsLoaded = isLoaded(items);
   const itemsArray = Array.isArray(items) ? items : [];
@@ -42,26 +36,28 @@ const LipsItemList = () =>{
   
   if (itemsLoaded && filteredItems.length > 0) {
     return (
-      <div>
+      <div className="full-width-container">
         <Header/>
         <TopSection/>
         <div className="listItemsMainContainer">
           <section className="title">
-              <h1>S H O P   L I P S :</h1>
+              <p>Shop lips</p>
               <hr className="hrBorder"></hr>  
           </section>
           <Items items={filteredItems}/>
         </div>
+        <LogosSection />
+        <Footer />
       </div>
     );
   } else if (itemsLoaded && filteredItems.length === 0) {
     return (
-      <div>
+      <div className="full-width-container">
         <Header/>
         <TopSection/>
         <div className="listItemsMainContainer">
           <section className="title">
-              <h1>S H O P   L I P S :</h1>
+              <p>Shop lips</p>
               <hr className="hrBorder"></hr>  
           </section>
           <div className="listItemsContainer">
@@ -74,12 +70,12 @@ const LipsItemList = () =>{
     );
   } else {
       return (
-      <div>
+      <div className="full-width-container">
         <Header/>
         <TopSection/>
         <div className="listItemsMainContainer">
           <section className="title">
-              <h1>S H O P   L I P S :</h1>
+              <p>Shop lips</p>
               <hr className="hrBorder"></hr>  
           </section>
           <div className="listItemsContainer">

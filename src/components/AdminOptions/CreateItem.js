@@ -4,6 +4,8 @@ import * as a from "../../actions";
 import { useDispatch } from "react-redux";
 import { db, storage } from '../../firebase';
 import Header from '../ReusableComponents/Header';
+import LogosSection from '../ReusableComponents/LogosSection';
+import Footer from '../ReusableComponents/Footer';
 
 const CreateItem = () => {
  
@@ -41,10 +43,6 @@ const CreateItem = () => {
     // Clear previous status
     setSubmitStatus(null);
     
-    const rawRating = form.rating.value;
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/bd97ad55-7a7a-4fbc-9f19-f7d92a0b37d5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'CreateItem.js:41',message:'Before conversion - rating from form',data:{rawRating,rawRatingType:typeof rawRating},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
     const itemData = {
       title: form.title.value,
       rating: Number(form.rating.value) || 0, // Convert to number
@@ -53,9 +51,6 @@ const CreateItem = () => {
       description: form.description.value,
       img: fileUrl,
     };
-    // #region agent log
-    fetch('http://127.0.0.1:7243/ingest/bd97ad55-7a7a-4fbc-9f19-f7d92a0b37d5',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'CreateItem.js:48',message:'ItemData after conversion - rating type',data:{rating:itemData.rating,ratingType:typeof itemData.rating},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-    // #endregion
     console.log('📝 Submitting item data:', itemData);
     
     try {
@@ -82,6 +77,8 @@ const CreateItem = () => {
         importImage={handleImageAsFile}
         buttonText="Submit"/>
       </div>
+      <LogosSection />
+      <Footer />
     </>
   );
 }

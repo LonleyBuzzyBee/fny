@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded} from 'react-redux-firebase';
-import ItemDetail from "../ItemDetails";
 import Header from '../../ReusableComponents/Header';
 import TopSection from '../../ReusableComponents/TopSection';
+import LogosSection from '../../ReusableComponents/LogosSection';
+import Footer from '../../ReusableComponents/Footer';
 import Items from '../Items';
 
 const BodyItemList = () =>{
   const items = useSelector(state => state.firestore.ordered.items);
-  const selectedItem = useSelector(state => state.selectedItem);
   
   // Console logs for debugging
   console.log('ListBodyPage - items:', items);
@@ -21,12 +21,6 @@ const BodyItemList = () =>{
     }
   ]);
   
-  if (selectedItem) {
-    return (
-      <ItemDetail />
-      )
-    }
-    
   // Check if items are loaded and is an array
   const itemsLoaded = isLoaded(items);
   const itemsArray = Array.isArray(items) ? items : [];
@@ -42,26 +36,28 @@ const BodyItemList = () =>{
   
   if (itemsLoaded && filteredItems.length > 0) {
     return (
-      <div>
+      <div className="full-width-container">
         <Header/>
         <TopSection/>
         <div className="listItemsMainContainer">
           <section className="title">
-              <h1>S H O P   B O D Y :</h1>
+              <p>Shop body</p>
               <hr className="hrBorder"></hr>  
           </section>
           <Items items={filteredItems}/>
         </div>
+        <LogosSection />
+        <Footer />
       </div>
     );
   } else if (itemsLoaded && filteredItems.length === 0) {
     return (
-      <div>
+      <div className="full-width-container">
         <Header/>
         <TopSection/>
         <div className="listItemsMainContainer">
           <section className="title">
-              <h1>S H O P  B O D Y :</h1>
+              <h1>Shop body</h1>
               <hr className="hrBorder"></hr>  
           </section>
           <div className="listItemsContainer">
@@ -74,12 +70,12 @@ const BodyItemList = () =>{
     );
   } else {
       return (
-      <div>
+      <div className="full-width-container">
         <Header/>
         <TopSection/>
         <div className="listItemsMainContainer">
           <section className="title">
-              <h1>S H O P  B O D Y :</h1>
+              <h1>Shop body</h1>
               <hr className="hrBorder"></hr>  
           </section>
           <div className="listItemsContainer">

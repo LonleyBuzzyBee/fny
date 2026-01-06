@@ -1,6 +1,15 @@
 // Re-export Redux Toolkit actions for backward compatibility
 import { updateCurrentUser } from '../reducers/current-user-reducer';
 import { setAdmin, clearAdmin } from '../reducers/admin-reducer';
+import { setSelectedItem, clearSelectedItem } from '../reducers/selected-item-reducer';
+import { 
+  addToCart, 
+  removeFromCart, 
+  updateQuantity, 
+  incrementQuantity, 
+  decrementQuantity, 
+  clearCart 
+} from '../reducers/cart-reducer';
 
 export const seeLanding = () => ({
   type: 'SEE_LANDING'
@@ -18,7 +27,6 @@ export const isAdmin = () => setAdmin(); // Map old action to new one
 export const clearAdminAction = clearAdmin; // Export for future use
 
 // Import and re-export Redux Toolkit selectedItem actions
-import { setSelectedItem, clearSelectedItem } from '../reducers/selected-item-reducer';
 export { setSelectedItem, clearSelectedItem };
 // Map old action to new one for backward compatibility
 export const selectedItem = (item) => setSelectedItem(item);
@@ -26,3 +34,13 @@ export const editItem = () => ({
   type: 'EDIT_ITEM'
   
 });
+
+// Import and re-export cart actions
+export { 
+  addToCart, 
+  removeFromCart, 
+  updateQuantity, 
+  incrementQuantity, 
+  decrementQuantity, 
+  clearCart 
+};

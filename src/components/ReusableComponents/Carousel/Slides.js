@@ -1,8 +1,3 @@
-// export const Slides = [
-//   {
-//     img : "image"
-//   }
-// ]
 export const Slides = [
   {
     img: "image"

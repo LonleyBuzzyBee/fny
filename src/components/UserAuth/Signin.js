@@ -1,10 +1,15 @@
 import React, {useState} from "react";
+import { useHistory } from 'react-router-dom';
 import { auth } from "../../firebase"
 import Header from '../ReusableComponents/Header';
+import LogosSection from '../ReusableComponents/LogosSection';
+import Footer from '../ReusableComponents/Footer';
 import FNYLOGO from '../assets/imgs/logoFNY.png'
 
 const Signin = () => { 
   const [message, setMessage] = useState("");
+  const history = useHistory();
+  
   const doSignIn = (event)=> {
   event.preventDefault();
   const email = event.target.signinEmail.value;
@@ -14,7 +19,11 @@ const Signin = () => {
   auth.signInWithEmailAndPassword(email, password).then(function () {
       // console.log(auth.currentUser)
     console.log("Successfully signed in!");
-    setMessage("Successfully signed in!")
+    setMessage("Successfully signed in!");
+    // Redirect to home page after successful sign-in
+    setTimeout(() => {
+      history.push("/");
+    }, 500);
   }).catch(function (error) {
     setMessage(error.message)
       
@@ -42,6 +51,8 @@ const Signin = () => {
           </form>
         </div>
       </div>
+      <LogosSection />
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { auth } from "../../firebase"
 import Header from '../ReusableComponents/Header';
+import LogosSection from '../ReusableComponents/LogosSection';
+import Footer from '../ReusableComponents/Footer';
 import FNYLOGO from '../assets/imgs/logoFNY.png'
 
 
@@ -41,6 +43,8 @@ const SignUp = () => {
           </form>
         </div>
       </div>
+      <LogosSection />
+      <Footer />
     </>
   );
 }
