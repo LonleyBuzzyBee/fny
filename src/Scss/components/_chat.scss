@@ -1,0 +1,235 @@
+// Chat Widget Styles
+.chat-icon-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #fdc5c7;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  svg {
+    color: #2D2926;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 25%;
+  max-width: 500px;
+  min-width: 350px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  // Tablet views - keep 25% width
+  @include respond(tab-port) {
+    width: 25%;
+  }
+  
+  @include respond(tab-land) {
+    width: 25%;
+  }
+  
+  // Mobile view - 100% width
+  @include respond(phone) {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    max-height: 100vh;
+  }
+  
+  &.chat-minimized {
+    height: auto;
+    
+    .chat-content {
+      display: none;
+    }
+  }
+}
+
+.chat-header {
+  background-color: #687226;
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.chat-header-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.chat-header-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.chat-header-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.chat-content {
+  padding: 12px;
+  max-height: 75vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  text-align: left;
+  
+  @include respond(phone) {
+    max-height: calc(100vh - 100px);
+    padding: 16px;
+  }
+}
+
+.chat-greeting {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #2D2926;
+}
+
+.chat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chat-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  
+  label {
+    font-size: 13px;
+    color: #2D2926;
+    font-weight: 500;
+    text-align: left;
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #fdc5c7;
+    border-radius: 4px;
+    font-family: 'Roboto Serif', serif;
+    font-weight: 200;
+    font-size: 14px;
+    color: #2D2926;
+    background-color: white;
+    box-sizing: border-box;
+    text-align: left;
+    line-height: 1.4;
+    
+    &:focus {
+      outline: none;
+      border-color: #ffb3b8;
+      box-shadow: 0 0 0 2px rgba(253, 197, 199, 0.2);
+    }
+    
+    &::placeholder {
+      color: #8B8580;
+    }
+  }
+  
+  select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235A5552' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 32px;
+  }
+}
+
+.chat-legal {
+  font-size: 12px;
+  color: #5A5552;
+  margin: 8px 0;
+  line-height: 1.5;
+  
+  a {
+    color: #0066cc;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #0052a3;
+    }
+  }
+}
+
+.chat-submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #fdc5c7;
+  color: #2D2926;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Roboto Serif', serif;
+  font-weight: 200;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 4px;
+  
+  &:hover {
+    background-color: #ffb3b8;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
