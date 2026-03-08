@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/FNY/static/css/main.44033a38.css",
+    "main.js": "/FNY/static/js/main.02b23452.js",
+    "static/media/creamsGif.gif": "/FNY/static/media/creamsGif.ed95fd5b6c18b4347d4a.gif",
+    "static/media/creamsGifStill.png": "/FNY/static/media/creamsGifStill.e18bcf6bb75986250cb1.png",
+    "static/media/dropperGif.gif": "/FNY/static/media/dropperGif.6b8616f768d77d9b683a.gif",
+    "static/media/girlLeaf3.jpg": "/FNY/static/media/girlLeaf3.e07eb2215e7a91d96d81.jpg",
+    "static/media/dropperGifStill.png": "/FNY/static/media/dropperGifStill.5270b2a2e443d122dd00.png",
+    "static/media/RobotoSerif-ExtraLightItalic.ttf": "/FNY/static/media/RobotoSerif-ExtraLightItalic.38b258536536f5e2fecd.ttf",
+    "static/media/RobotoSerif-ExtraLight.ttf": "/FNY/static/media/RobotoSerif-ExtraLight.bc45c805b23fc28d904d.ttf",
+    "static/media/lotion.jpg": "/FNY/static/media/lotion.81783a2104353b7e65ae.jpg",
+    "static/media/sale.jpeg": "/FNY/static/media/sale.1843b35c11a8f012f65e.jpeg",
+    "static/media/foamy.jpg": "/FNY/static/media/foamy.d8973710686288d32a2e.jpg",
+    "static/media/blankDropper.jpg": "/FNY/static/media/blankDropper.6c70d5f422f8f6e15c00.jpg",
+    "static/media/blankDrooperMultiple.jpg": "/FNY/static/media/blankDrooperMultiple.9ad8315108d3914e097e.jpg",
+    "static/media/pinkMoistureStand.jpg": "/FNY/static/media/pinkMoistureStand.c204e15083ece3127a86.jpg",
+    "static/media/pinkMoisture.jpg": "/FNY/static/media/pinkMoisture.8452b81b6b78ad75d4ac.jpg",
+    "index.html": "/FNY/index.html",
+    "main.44033a38.css.map": "/FNY/static/css/main.44033a38.css.map",
+    "main.02b23452.js.map": "/FNY/static/js/main.02b23452.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.44033a38.css",
+    "static/js/main.02b23452.js"
+  ]
+}
