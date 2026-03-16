@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL ? process.env.PUBLIC_URL.replace(/\/$/, '') : ''}>
         <Routes />
         <Chat />
       </Router>

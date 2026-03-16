@@ -40,9 +40,17 @@ _In Terminal:_
 *  ```FNY```
 * Open file in your preferred text editor
 * run  ```npm install```
-* then ```npm build```
+* then ```npm run build```
 * finally ```npm start```
 
+## Deployment (GitHub Pages)
+
+The live site serves the **built React app** (index.html), not the repository README.
+
+- **From your machine:** Run `npm run deploy` to build and push the `build` folder to the `gh-pages` branch. In the repo **Settings → Pages**, set source to **Deploy from a branch** and choose the `gh-pages` branch.
+- **From GitHub Actions:** On push to `master`/`main`, the workflow builds the app and deploys it. In **Settings → Pages**, set source to **GitHub Actions** so the deployed site uses this build (index.html).
+
+Live app: [https://lonleybuzzybee.github.io/FNY/](https://lonleybuzzybee.github.io/FNY/)
 
 ## Known Bugs
 

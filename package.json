@@ -1,6 +1,7 @@
 {
   "name": "fny",
   "version": "0.1.0",
+  "homepage": "https://lonleybuzzybee.github.io/FNY/",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
@@ -33,11 +34,26 @@
   "scripts": {
     "start": "react-app-rewired --openssl-legacy-provider start",
     "build": "react-app-rewired --openssl-legacy-provider build",
+    "postbuild": "node scripts/copy-404.js",
     "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "server": "node server.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "gh-pages": "^6.3.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.4"
   },
   "browserslist": {
     "production": [
@@ -50,18 +66,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "assert": "^2.1.0",
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.1",
-    "https-browserify": "^1.0.0",
-    "os-browserify": "^0.3.0",
-    "path-browserify": "^1.0.1",
-    "process": "^0.11.10",
-    "react-app-rewired": "^2.2.1",
-    "stream-browserify": "^3.0.0",
-    "stream-http": "^3.2.0",
-    "url": "^0.11.4"
   }
 }
