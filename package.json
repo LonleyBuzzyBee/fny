@@ -1,7 +1,7 @@
 {
   "name": "fny",
   "version": "0.1.0",
-  "homepage": "https://lonleybuzzybee.github.io/",
+  "homepage": "https://lonleybuzzybee.github.io/fny/",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
